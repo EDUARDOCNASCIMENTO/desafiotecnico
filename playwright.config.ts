@@ -24,23 +24,49 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+/*     reporter: 'html', */
+
+   reporter: [
+     ['allure-playwright'], // Configura o reporter do Allure
+     ['dot'], // Opcional, exibe o progresso no terminal
+   ],
+  
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+    //baseURL: process.env.URL_BASE,
     trace: 'on-first-retry',
   },
-
+  
   /* Configure projects for major browsers */
   projects: [
+
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
 
+     {
+      name: 'api',
+      testDir: './tests/api-modelo1/specs',
+      use: { // SÓ API
+        baseURL: process.env.URL_BASE_API,
+        browserName: 'chromium', // não precisa, mas pode reforçar
+      }
+    },
+    {
+      name: 'e2e',
+      testDir: './tests/e2e',
+      use: { // SÓ E2E
+        baseURL: process.env.URL_BASE_E2E,
+        browserName: 'chromium', // sobrescreve o global só aqui
+      }
+    }
+  ]
+});
 /*     {
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
@@ -70,7 +96,7 @@ export default defineConfig({
     //   name: 'Google Chrome',
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     // },
-  ],
+  
 
   /* Run your local dev server before starting the tests */
   // webServer: {
@@ -78,4 +104,4 @@ export default defineConfig({
   //   url: 'http://localhost:3000',
   //   reuseExistingServer: !process.env.CI,
   // },
-});
+

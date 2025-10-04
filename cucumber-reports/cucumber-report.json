@@ -1,0 +1,108 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "sign-up;validate-the-register-new-user",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Validate the register new user",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 374568800
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 373182699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I open the Sign Up page",
+            "match": {
+              "location": "file:\\C:\\Users\\Eduardo\\Desktop\\Outsera\\projeto-outsera\\tests\\e2e\\steps\\registerNewUser.steps.ts:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1116729600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "I fill the registration form",
+            "match": {
+              "location": "file:\\C:\\Users\\Eduardo\\Desktop\\Outsera\\projeto-outsera\\tests\\e2e\\steps\\registerNewUser.steps.ts:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1225002500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 6,
+            "name": "I submit the registration",
+            "match": {
+              "location": "file:\\C:\\Users\\Eduardo\\Desktop\\Outsera\\projeto-outsera\\tests\\e2e\\steps\\registerNewUser.steps.ts:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 740639799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 7,
+            "name": "I should see the confirmation page",
+            "match": {
+              "location": "file:\\C:\\Users\\Eduardo\\Desktop\\Outsera\\projeto-outsera\\tests\\e2e\\steps\\registerNewUser.steps.ts:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 55303599
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 180385400
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2014600
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "sign-up",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Sign Up",
+    "tags": [],
+    "uri": "tests\\e2e\\features\\registerNewUser.feature"
+  }
+]

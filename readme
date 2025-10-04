@@ -1,0 +1,28 @@
+Como rodar
+
+Rodar só API (CLI):
+
+yarn playwright test --project=api
+
+
+Rodar só E2E (CLI):
+
+yarn playwright test --project=e2e
+
+
+Rodar todos os testes:
+
+yarn playwright test
+
+
+Rodar no modo UI (e filtrar por projeto dentro da interface):
+
+yarn playwright test --ui
+
+
+Rodar no modo UI já filtrado por projeto:
+
+yarn playwright test --ui --project=api
+
+
+yarn playwright test --ui --project=e2e
