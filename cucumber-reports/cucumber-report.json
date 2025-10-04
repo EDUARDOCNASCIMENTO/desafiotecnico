@@ -4,6 +4,96 @@
     "elements": [
       {
         "description": "",
+        "id": "checkout;checkout-some-products",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Checkout some products",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 419122199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I open the Login page",
+            "match": {
+              "location": "file:\\C:\\Users\\Eduardo\\Desktop\\Outsera\\projeto-outsera\\tests\\e2e\\steps\\checkoutProducts.steps.ts:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1652310700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "I enter with a registered user",
+            "match": {
+              "location": "file:\\C:\\Users\\Eduardo\\Desktop\\Outsera\\projeto-outsera\\tests\\e2e\\steps\\checkoutProducts.steps.ts:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 844045100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 6,
+            "name": "I place the order",
+            "match": {
+              "location": "file:\\C:\\Users\\Eduardo\\Desktop\\Outsera\\projeto-outsera\\tests\\e2e\\steps\\checkoutProducts.steps.ts:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5491480199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 7,
+            "name": "I should see the purchase confirmation",
+            "match": {
+              "location": "file:\\C:\\Users\\Eduardo\\Desktop\\Outsera\\projeto-outsera\\tests\\e2e\\steps\\checkoutProducts.steps.ts:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 308730700
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 305014699
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "checkout",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Checkout",
+    "tags": [],
+    "uri": "tests\\e2e\\features\\checkoutProducts.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
         "id": "sign-up;validate-the-register-new-user",
         "keyword": "Scenario",
         "line": 3,
@@ -14,15 +104,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 374568800
-            }
-          },
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 373182699
+              "duration": 432546800
             }
           },
           {
@@ -35,7 +117,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1116729600
+              "duration": 1329380600
             }
           },
           {
@@ -48,7 +130,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1225002500
+              "duration": 637849500
             }
           },
           {
@@ -61,7 +143,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 740639799
+              "duration": 679113000
             }
           },
           {
@@ -74,7 +156,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 55303599
+              "duration": 29127399
             }
           },
           {
@@ -82,15 +164,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 180385400
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 2014600
+              "duration": 157479999
             }
           }
         ],

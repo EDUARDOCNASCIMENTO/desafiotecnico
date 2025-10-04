@@ -1,21 +1,7 @@
-import { Before, After, Given, When, Then } from "@cucumber/cucumber";
-import { chromium } from "@playwright/test";
+import { Given, When, Then } from "@cucumber/cucumber";
 import SignUp from "../page-objects/registerNewUser.pom";
 import { CustomWorld } from "../support/world";
-
-// ----------------- Hooks -----------------
-
-Before(async function (this: CustomWorld) {
-  this.browser = await chromium.launch({ headless: false });
-  const context = await this.browser.newContext();
-  this.page = await context.newPage();
-});
-
-After(async function (this: CustomWorld) {
-  await this.browser.close();
-});
-
-// ----------------- Steps -----------------
+import { faker } from "@faker-js/faker";
 
 Given("I open the Sign Up page", async function (this: CustomWorld) {
   const signUp = new SignUp(this.page);
@@ -25,12 +11,12 @@ Given("I open the Sign Up page", async function (this: CustomWorld) {
 When("I fill the registration form", async function (this: CustomWorld) {
   const signUp = new SignUp(this.page);
 
-  // Gerar e salvar dados de usuário no World
+  // Gerar dados aleatórios e salvar no World
   this.username = `user_${Date.now()}`;
-  this.password = "test@123";
+  this.password = faker.internet.password();
 
   await signUp.fillFullName();
-await signUp.fillEmailWith(`${this.username}@test.com`);
+  await signUp.fillEmailWith(`${this.username}@test.com`);
   await signUp.clickSignUp();
   await signUp.selectGender();
   await signUp.fillPasswordWith(this.password);
@@ -56,6 +42,5 @@ Then("I should see the confirmation page", async function (this: CustomWorld) {
   const signUp = new SignUp(this.page);
   await signUp.waitForConfirmation();
 
-  // Validação opcional e log de confirmação
-  console.log(`✅ Usuário criado: ${this.username!} / ${this.password!}`);
+  console.log(`✅ Usuário criado: ${this.username} / ${this.password}`);
 });

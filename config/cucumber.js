@@ -1,6 +1,6 @@
 export default {
   paths: [
-    "tests/e2e/features/**/*.feature"
+    "tests/e2e/features/**/*.feature" // Todas as features
   ],
   dryRun: false,
   format: [
@@ -14,9 +14,9 @@ export default {
     snippetInterface: "async-await"
   },
   import: [
-    "tests/e2e/steps/**/*.ts",       // seus steps
-    "tests/e2e/support/world.ts",    // Custom World
-    "tests/e2e/support/hooks.ts"     // Hooks Before/After
+    "tests/e2e/support/world.ts",       // Custom World
+    "tests/e2e/support/hooks.ts",       // Hooks Before/After
+    "tests/e2e/steps/**/*.steps.ts"     // Todos os steps
   ],
-  requireModule: ["ts-node/register"] // permite rodar TypeScript direto
+  requireModule: ["ts-node/register"]   // Permite rodar TypeScript direto
 };
