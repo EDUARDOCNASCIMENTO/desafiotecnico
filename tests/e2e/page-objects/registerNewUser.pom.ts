@@ -74,7 +74,7 @@ export default class SignUp {
     await this.page.goto(`${BASE_URL}/signup`, { waitUntil: "domcontentloaded" });
   }
 
-  // ----------------- Métodos originais usando Faker -----------------
+  // ----------------- Métodos originais usando Faker ----------------
   async fillFullName() { await this.inputFullName.fill(fullName); }
   async fillEmail() { await this.inputEmail.fill(email); }
   async clickSignUp() { await this.signUpButton.click(); }
