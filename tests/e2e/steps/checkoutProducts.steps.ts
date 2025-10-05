@@ -40,5 +40,4 @@ Then(
   const checkout = new Checkout(this.page);
   await checkout.checkOrderPlace();
   await checkout.clickDownloadInvoice();
-
 });
