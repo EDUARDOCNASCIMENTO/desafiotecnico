@@ -7,10 +7,15 @@ on:
     branches: [ main, develop ]
 
 jobs:
-  playwright-tests:
+  # O nome do job é 'tests', mas ele roda todos os tipos de teste
+  tests:
     runs-on: ubuntu-latest
+    
+    # Define as variáveis de ambiente para a pipeline
     env:
       URL_BASE_API: ${{ secrets.URL_BASE_API }}
+      URL_BASE_E2E: ${{ secrets.URL_BASE_E2E }}
+      
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -26,9 +31,8 @@ jobs:
       - name: Install Playwright Browsers & Dependencies
         run: npx playwright install --with-deps
 
-      # --- LINHA CORRIGIDA ABAIXO ---
       - name: Run API Tests
-        run: npx playwright test
+        run: npx playwright test --project=api
 
       - name: Run E2E Tests
         run: npm run cucumber
