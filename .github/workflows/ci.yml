@@ -35,20 +35,17 @@ jobs:
       - name: Run E2E Tests
         run: npm run cucumber
 
-      # --- PASSO ADICIONADO PARA HABILITAR KVM ---
-      - name: Enable KVM for hardware acceleration
-        run: |
-          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm.rules
-          sudo udevadm control --reload-rules
-          sudo udevadm trigger
-
+      # A etapa de KVM foi removida pois não estava funcionando no ambiente.
       - name: Start Android Emulator
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 31
-          profile: "Pixel 4"
           arch: x86_64
           target: google_apis
+          # A opção 'profile' e outras foram removidas para usar padrões compatíveis.
+          # Mantivemos apenas as opções de emulador essenciais para um ambiente sem interface.
+          emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim
+          disable-animations: true
           script: echo "Emulator started successfully."
 
       - name: Run Mobile Tests
