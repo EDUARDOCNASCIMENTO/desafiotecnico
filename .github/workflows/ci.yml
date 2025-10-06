@@ -2,9 +2,9 @@ name: CI - Outsera Tests
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main, branchinicial ]
   pull_request:
-    branches: [ main, develop ]
+    branches: [ main, branchinicial ]
 
 jobs:
   tests:
