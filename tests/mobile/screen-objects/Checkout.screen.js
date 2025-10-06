@@ -4,7 +4,6 @@ class CheckoutScreen {
     return $('//android.widget.ScrollView[@content-desc="checkout address screen"]');
   }
 
-  // --- CAMPOS DE PREENCHIMENTO (Seletores Corretos) ---
   get fullNameField() {
     return $('~Full Name* input field');
   }
@@ -25,14 +24,10 @@ class CheckoutScreen {
     return $('~Country* input field');
   }
 
-  // --- BOTÃO DE PAGAMENTO ---
   get toPaymentButton() {
     return $('~To Payment button');
   }
 
-  /**
-   * Método auxiliar para preencher todo o formulário de endereço
-   */
   async fillShippingAddress(fullName, address, city, zipCode, country) {
     await this.fullNameField.setValue(fullName);
     await this.addressLineOneField.setValue(address);

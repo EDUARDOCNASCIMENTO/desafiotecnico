@@ -1,4 +1,78 @@
-Como rodar
+
+Olá! 
+
+Sejam-bem vindos, o projeto está nomeado como desafio-tecnico.
+
+Está incluso:
+
+- Teste de carga - tests\performance\teste-carga.js
+Teste simples utilizando K6 para simular 500 usuários simultâneos por 5 minutos em uma API de mock, e gerando um relatório html logo em seguida. Foi utilizado o conceito de screen objects, e o relatório é gerado posteriormente na mesma pasta em formato HTML.
+
+- Teste de API -  tests\api\specs\booking-API-tests.spec
+Testes de uma API pública utilizando o Playwright, contendo todos os métodos, e cenários positivos e alguns negativos. Os testes estão estruturados para que o arquivo principal fique em um formato mais limpo, separando das classes de responses e payloads, também conta com uma classe actions para que os métodos possam ser reaproveitados em futuros testes. O relatório é gerado pelo próprio Playwright no fim da execução.
+
+- Testes E2E -  tests\e2e\steps\
+Teste de um site fictício de e-commerce, feito em Playwright + Cucumber, utilizando o conceito de Page Objects combinado com Fixtures, mantendo assim os elementos reaproveitáveis e os testes de fácil manutenção.
+Um dos testes cadastra um novo usuário, equanto o outro efetua uma compra, conforme o exercício proposto, o relatório é gerado posteriormente.
+
+- Testes Mobile - tests\mobile\mobile-specs
+Testes de uma apk de testes (saucelabs - que se encontra em apps\android\Android-MyDemoAppRN.1.3.0.build-244.apk) utilizando Appium e efetuando uma validação de login, posteriormente um login bem sucedido, e também a verificação de um elemento na tela. O relatório é gerado ao fim do teste pelo Allure.
+
+- CI/CD - github\workflows\ci.yml
+Arquivo yml com as configurações para rodar os testes de API, E2E e mobile pelo Git Hub Actions de forma automatizada. 
+OBS: O simulador do Android na pipeline está levando em torno de 10 minutos para ser inicializado e as vezes a pipeline falha, devido ao prazo de entrega do exercício não pude otimizar, mas todos os testes estão rodando a cada git push.
+
+
+_____________________________________________________________________________________________________________________________________
+OBS : Todos os relatórios gerados gerados dos testes executados como exemplo estão em uma pasta all-reports, criado apenas para essa finaldiade.
+____________________________________________________________________________________________________________________________________
+
+## ESTRUTURA DO PROJETO ##
+
+desafio tecnico/
+│
+├── .github/
+│   └── workflows/
+│       ├── ci.yml                 # Pipeline CI/CD - executa testes API, E2E e mobile
+│   
+│
+├── apps/
+│   └── android/
+│       └── Android-MyDemoAppRN.1.3.0.build-244.apk   # APK usado nos testes mobile
+│
+├── reports/
+│   └── allure-results/            # Resultados brutos do Allure
+│   └── allure-report/             # Relatório HTML gerado do Allure
+│
+├── tests/
+│   ├── api/
+│   │   └── specs/
+│   │       └── booking-API-tests.spec.ts             # Testes de API (Playwright)
+│   │
+│   ├── e2e/
+│   │   ├── pom/                   # Page Object Models
+│   │   ├── steps/                 # Passos do Cucumber (BDD)
+│   │   └── features/              # Arquivos .feature (Gherkin)
+│   │
+│   ├── mobile/
+│   │   └── mobile-specs/
+│   │       └── verifyProducts.e2e.js                 # Testes de app mobile (WebdriverIO + Appium)
+│   │
+│   └── performance/
+│       └── teste-carga.js                            # Teste de carga com K6
+│
+├── wdio.conf.js                                      # Configuração WebdriverIO (mobile)
+├── playwright.config.ts                              # Configuração Playwright
+├── cucumber.js                                       # Configuração do Cucumber
+├── package.json                                      # Scripts e dependências do projeto
+├── .env                                              # URLs base (ex: URL_BASE_API=https://restful-booker.herokuapp.com/)
+└── README.md                                         # Documentação do projeto
+
+# COMO INSTALAR AS DEPENDÊNCIAS
+
+npm install
+
+# COMO RODAR OS TESTES E GERAR RELATÓRIOS
 
 Rodar só API (CLI):
 

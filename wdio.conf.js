@@ -134,9 +134,18 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec'],
-
-
+   reporters: [
+    'spec', // Mantém o relatório simples no console
+    
+    // Configuração do Allure Reporter
+    ['allure', {
+      // Pasta onde os resultados brutos do Allure serão salvos
+      outputDir: 'allure-results',
+      // Limpa a pasta de resultados antes de cada execução
+      disableWebdriverStepsReporting: true,
+      disableWebdriverScreenshotsReporting: false,
+    }]
+  ],
 
     //
     // Options to be passed to Mocha.

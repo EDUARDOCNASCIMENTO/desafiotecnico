@@ -6,7 +6,6 @@ dotenv.config();
 
 const BASE_URL = process.env.URL_BASE_E2E;
 
-// Dados Faker padrão (continuam para métodos originais)
 const fullName = faker.person.fullName();
 const email = faker.internet.email();
 const password = faker.internet.password();
@@ -74,7 +73,6 @@ export default class SignUp {
     await this.page.goto(`${BASE_URL}/signup`, { waitUntil: "domcontentloaded" });
   }
 
-  // ----------------- Métodos originais usando Faker ----------------
   async fillFullName() { await this.inputFullName.fill(fullName); }
   async fillEmail() { await this.inputEmail.fill(email); }
   async clickSignUp() { await this.signUpButton.click(); }
@@ -101,7 +99,6 @@ export default class SignUp {
     await this.confirmationMessage.waitFor({ timeout: 60000 });
   }
 
-  // ----------------- Novos métodos para usar dados do World -----------------
   async fillEmailWith(email: string) {
     await this.inputEmail.fill(email);
   }

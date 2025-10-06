@@ -1,1 +1,0 @@
-⚠️ Response não era JSON, retornou texto: Internal Server Error
