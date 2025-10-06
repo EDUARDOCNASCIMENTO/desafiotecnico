@@ -2,19 +2,20 @@ name: CI - Outsera Tests
 
 on:
   push:
-    branches: [ main, develop, master ]
+    branches: [ main, develop ]
   pull_request:
-    branches: [ main, develop, master ]
+    branches: [ main, develop ]
 
 jobs:
-  build:
+  playwright-tests:
     runs-on: ubuntu-latest
-
+    env: # <-- define variáveis de ambiente
+      URL_BASE_API: ${{ secrets.URL_BASE_API }}
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: 20
@@ -22,16 +23,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Set environment variables
-        run: |
-          echo "URL_BASE_API=https://restful-booker.herokuapp.com/" >> $GITHUB_ENV
-          echo "NODE_ENV=test" >> $GITHUB_ENV
-
-      - name: Run API tests (Playwright)
+      - name: Run API Tests
         run: npx playwright test tests/api/specs --project=api
 
-      - name: Run E2E tests (Cucumber)
+      - name: Run E2E Tests
         run: npm run cucumber
 
-      - name: Run Mobile tests (WDIO)
+      - name: Run Mobile Tests
         run: npx wdio
