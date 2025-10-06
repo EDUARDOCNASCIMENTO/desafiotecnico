@@ -68,36 +68,44 @@ export default class Checkout {
   async fillEmail(email: string) {
     await this.inputEmail.fill(email);
   }
+  
   async fillPassword(password: string) {
     await this.inputPassword.fill(password);
   }
+
    async clickLogin() {
     await this.loginButton.click();
   }
+  
   async clickProductsButton() {
     await this.productsButton.click({ force: true });
   }
+
   async clickCartButton() {
     await this.cartButton.click();
   }
+
   async addFirstProduct() {
     await this.firstProduct.click();
   }
+
   async continueShoppingButton() {
     await this.continueShopping.waitFor({ state: 'visible' });
     await this.continueShopping.click();
   }
+
   async cartModalCheck() {
     await this.cartModal.isVisible();
   }
+
   async addSecondProduct() {
     await this.secondProduct.click();
   }
 
   async clickToProcede() {
     await this.proceedButton.click();
-    
   }
+
   async clickToPlaceOrder() {
      await this.placeOrderButton.click();
   }
@@ -105,27 +113,34 @@ export default class Checkout {
   async fillNameOnCard() {
     await this.nameOnCard.fill(nameOnCard);
   }
+
   async fillCardNumber() {
     await this.cardNumber.fill(card);
   }
+
   async fillCvcNumber() {
     await this.cvcNumber.click();
     await this.cvcNumber.fill(cvc);
   }
+
   async fillExpiryMonth() {
     await this.expiryMonth.click();
     await this.expiryMonth.fill("06");
   }
+
   async fillExpiryYear() {
      await this.expiryYear.click();
     await this.expiryYear.fill("2029");
   }
+
   async clickPayButton() {
     await this.payButton.click();
   }
+
    async checkOrderPlace() {
     await this.orderedPlace.isVisible();
   }
+
      async clickDownloadInvoice() {
     await this.downloadInvoice.click();
   }
