@@ -28,7 +28,7 @@ jobs:
 
       # --- LINHA CORRIGIDA ABAIXO ---
       - name: Run API Tests
-        run: npx playwright test --project=api
+        run: npx playwright test
 
       - name: Run E2E Tests
         run: npm run cucumber
