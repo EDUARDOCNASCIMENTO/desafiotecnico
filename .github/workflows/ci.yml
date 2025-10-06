@@ -7,11 +7,13 @@ on:
     branches: [ main, develop ]
 
 jobs:
-  playwright-tests:
+  tests:
     runs-on: ubuntu-latest
+    
     env:
       URL_BASE_API: ${{ secrets.URL_BASE_API }}
       URL_BASE_E2E: ${{ secrets.URL_BASE_E2E }}
+      
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -27,12 +29,29 @@ jobs:
       - name: Install Playwright Browsers & Dependencies
         run: npx playwright install --with-deps
 
-      # --- LINHA CORRIGIDA ABAIXO ---
       - name: Run API Tests
-        run: npx playwright test
+        run: npx playwright test --project=api
 
       - name: Run E2E Tests
         run: npm run cucumber
 
+      # --- NOVO PASSO ADICIONADO AQUI ---
+      - name: Start Android Emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          # Nível da API correspondente ao Android 12, que você usa nas suas capabilities
+          api-level: 31
+          # Perfil do dispositivo para corresponder ao seu 'deviceName'
+          profile: "Pixel 4"
+          # Arquitetura padrão para os runners do GitHub
+          arch: x86_64
+          # Imagem com as APIs do Google, que é mais completa
+          target: google_apis
+          # O script a ser executado depois que o emulador iniciar. 
+          # A action continuará rodando em background para os próximos passos.
+          script: echo "Emulator started successfully."
+
       - name: Run Mobile Tests
+        # Adicionamos um 'timeout' maior para este passo, pois o emulador pode demorar para se estabilizar
+        timeout-minutes: 15
         run: npx wdio
