@@ -9,9 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      URL_BASE_API: "https://restful-booker.herokuapp.com/" # sua URL da API
-      NODE_ENV: test
 
     steps:
       - name: Checkout repository
@@ -24,6 +21,11 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Set environment variables
+        run: |
+          echo "URL_BASE_API=https://restful-booker.herokuapp.com/" >> $GITHUB_ENV
+          echo "NODE_ENV=test" >> $GITHUB_ENV
 
       - name: Run API tests (Playwright)
         run: npx playwright test tests/api/specs --project=api
