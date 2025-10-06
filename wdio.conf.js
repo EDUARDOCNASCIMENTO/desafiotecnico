@@ -28,6 +28,17 @@ exports.config = {
     // then the current working directory is where your `package.json` resides, so `wdio`
     // will be called from there.
     //
+
+  reporters: [
+    'spec',
+    ['allure', {
+        outputDir: './reports/allure-results',
+        disableWebdriverStepsReporting: false,
+        disableWebdriverScreenshotsReporting: false,
+    }]
+],
+
+
     specs: [
         './tests/mobile/mobile-specs/**/*.js'
     ],

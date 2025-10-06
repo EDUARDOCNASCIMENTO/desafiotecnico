@@ -6,7 +6,17 @@
   "scripts": {
     "test:mobile": "npx wdio",
     "report:allure:generate": "allure generate ./reports/allure-results --clean -o ./reports/html-report",
-    "report:allure:open": "allure open ./reports/html-report"
+    "report:allure:open": "allure open ./reports/html-report",
+    "test:mobile:allure": "npx wdio && allure generate ./reports/allure-results --clean -o ./reports/html-report && allure open ./reports/html-report",
+    "perf:serve": "json-server --watch tests/performance/db.json",
+    "perf:run": "k6 run tests/performance/teste-carga.js",
+    "test:performance": "start-server-and-test perf:serve http://localhost:3000/users perf:run",
+    "test:e2e": "npm run test:e2e:run || npm run test:e2e:report",
+     "cucumber:run": "tsx ./node_modules/@cucumber/cucumber/bin/cucumber.js --config config/cucumber.js",
+    "cucumber:report": "node generate-cucumber-report.js",
+    "cucumber": "npm run cucumber:run || npm run cucumber:report",
+    "test:api": "npx playwright test",
+    "test:api:report": "npm run test:api && npx playwright show-report"
   },
   "keywords": [],
   "author": "Eduardo <eduardocn@yahoo.com.br>",
@@ -34,6 +44,7 @@
     "appium-xcuitest-driver": "^4.16.5",
     "chai": "^6.2.0",
     "k6-html-reporter": "^1.0.5",
+    "start-server-and-test": "^2.1.2",
     "ts-node": "^10.9.2",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3",

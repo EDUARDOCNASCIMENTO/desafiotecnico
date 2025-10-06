@@ -6,67 +6,55 @@ Sejam-bem vindos, o projeto está nomeado como desafio-tecnico.
 Está incluso:
 
 - Teste de carga - tests\performance\teste-carga.js
-Teste simples utilizando K6 para simular 500 usuários simultâneos por 5 minutos em uma API de mock, e gerando um relatório html logo em seguida. Foi utilizado o conceito de screen objects, e o relatório é gerado posteriormente na mesma pasta em formato HTML.
+Teste simples utilizando K6 para simular 500 usuários simultâneos por 5 minutos em uma API de mock, e gerando um relatório html logo em seguida. Foi utilizado o conceito de page/screen objects, e o relatório é gerado posteriormente na mesma pasta em formato HTML.
 
 - Teste de API -  tests\api\specs\booking-API-tests.spec
 Testes de uma API pública utilizando o Playwright, contendo todos os métodos, e cenários positivos e alguns negativos. Os testes estão estruturados para que o arquivo principal fique em um formato mais limpo, separando das classes de responses e payloads, também conta com uma classe actions para que os métodos possam ser reaproveitados em futuros testes. O relatório é gerado pelo próprio Playwright no fim da execução.
 
 - Testes E2E -  tests\e2e\steps\
-Teste de um site fictício de e-commerce, feito em Playwright + Cucumber, utilizando o conceito de Page Objects combinado com Fixtures, mantendo assim os elementos reaproveitáveis e os testes de fácil manutenção.
-Um dos testes cadastra um novo usuário, equanto o outro efetua uma compra, conforme o exercício proposto, o relatório é gerado posteriormente.
+Teste de um site fictício de e-commerce, feito em Playwright + Cucumber, utilizando o conceito de Page Objects + Fixtures, mantendo assim os elementos reaproveitáveis e os testes de fácil manutenção.
+Um dos testes cadastra um novo usuário, equanto o outro efetua uma compra, conforme o exercício proposto. O relatório é gerado posteriormente.
 
 - Testes Mobile - tests\mobile\mobile-specs
 Testes de uma apk de testes (saucelabs - que se encontra em apps\android\Android-MyDemoAppRN.1.3.0.build-244.apk) utilizando Appium e efetuando uma validação de login, posteriormente um login bem sucedido, e também a verificação de um elemento na tela. O relatório é gerado ao fim do teste pelo Allure.
 
 - CI/CD - github\workflows\ci.yml
 Arquivo yml com as configurações para rodar os testes de API, E2E e mobile pelo Git Hub Actions de forma automatizada. 
-OBS: O simulador do Android na pipeline está levando em torno de 10 minutos para ser inicializado e as vezes a pipeline falha, devido ao prazo de entrega do exercício não pude otimizar, mas todos os testes estão rodando a cada git push.
+OBS: O simulador do Android na pipeline está levando em torno de 10 minutos para ser inicializado e as vezes a pipeline falha, devido ao prazo de entrega do exercício não pude otimizar essa questão, mas todos os testes estão rodando a cada git push.
 
-
-_____________________________________________________________________________________________________________________________________
 OBS : Todos os relatórios gerados gerados dos testes executados como exemplo estão em uma pasta all-reports, criado apenas para essa finaldiade.
 ____________________________________________________________________________________________________________________________________
 
 ## ESTRUTURA DO PROJETO ##
 
-desafio tecnico/
-│
 ├── .github/
 │   └── workflows/
-│       ├── ci.yml                 # Pipeline CI/CD - executa testes API, E2E e mobile
-│   
-│
+│       └── ci.yml          # Define a pipeline de Integração Contínua (CI/CD)
 ├── apps/
 │   └── android/
-│       └── Android-MyDemoAppRN.1.3.0.build-244.apk   # APK usado nos testes mobile
-│
-├── reports/
-│   └── allure-results/            # Resultados brutos do Allure
-│   └── allure-report/             # Relatório HTML gerado do Allure
-│
+│       └── ...apk          # APK do aplicativo mobile para os testes
+├── config/
+│   └── cucumber.js         # Arquivo de configuração do Cucumber.js
 ├── tests/
 │   ├── api/
-│   │   └── specs/
-│   │       └── booking-API-tests.spec.ts             # Testes de API (Playwright)
-│   │
+│   │   ├── actions/        # Ações reutilizáveis para as requisições da API
+│   │   └── specs/          # Arquivos de teste da API com Playwright
 │   ├── e2e/
-│   │   ├── pom/                   # Page Object Models
-│   │   ├── steps/                 # Passos do Cucumber (BDD)
-│   │   └── features/              # Arquivos .feature (Gherkin)
-│   │
+│   │   ├── features/       # Arquivos .feature com os cenários em Gherkin (Cucumber)
+│   │   ├── page-objects/   # Page Objects para os testes de interface web
+│   │   ├── steps/          # Step definitions que conectam Gherkin ao código
+│   │   └── support/        # Hooks (Before/After) e configurações do World (Cucumber)
 │   ├── mobile/
-│   │   └── mobile-specs/
-│   │       └── verifyProducts.e2e.js                 # Testes de app mobile (WebdriverIO + Appium)
-│   │
+│   │   ├── mobile-specs/   # Arquivos de teste mobile com WebdriverIO
+│   │   └── screen-objects/ # Screen Objects para os testes mobile
 │   └── performance/
-│       └── teste-carga.js                            # Teste de carga com K6
-│
-├── wdio.conf.js                                      # Configuração WebdriverIO (mobile)
-├── playwright.config.ts                              # Configuração Playwright
-├── cucumber.js                                       # Configuração do Cucumber
-├── package.json                                      # Scripts e dependências do projeto
-├── .env                                              # URLs base (ex: URL_BASE_API=https://restful-booker.herokuapp.com/)
-└── README.md                                         # Documentação do projeto
+│       ├── db.json         # Banco de dados de mock para a API local
+│       └── teste-carga.js  # Script de teste de carga com K6
+├── .gitignore              # Arquivos e pastas a serem ignorados pelo Git
+├── package.json            # Define as dependências e scripts do projeto
+├── playwright.config.ts    # Arquivo de configuração principal do Playwright
+└── wdio.conf.cjs           # Arquivo de configuração principal do WebdriverIO
+____________________________________________________________________________________________________________________________________
 
 # COMO INSTALAR AS DEPENDÊNCIAS
 
@@ -74,29 +62,51 @@ npm install
 
 # COMO RODAR OS TESTES E GERAR RELATÓRIOS
 
-Rodar só API (CLI):
+• TESTES DE CARGA 
+ npm run test:performance 
+(Inicia o servidor da API de mock e executa os testes de carga, o relatório html é gerado automaticamente na mesma pasta após o teste)
 
-yarn playwright test --project=api
+• TESTES E2E 
+npm run cucumber
+(Executa os testes em formato headed e gera o relatório na pasta desafio-tecnico\cucumber-reports)
 
+• TESTES DE API 
+ npm run test:api:report
+(Executa os testes de API, geram e abrem o report)
 
-Rodar só E2E (CLI):
+• TESTES MOBILE 
+npm run test:mobile:allure
+(Executa os testes e gera o relatório pelo Allure)
 
-yarn playwright test --project=e2e
+# VERSÕES DO PROJETO
 
+Testes E2E / API
 
-Rodar todos os testes:
+Playwright (@playwright/test): 1.55.1
+Cucumber (@cucumber/cucumber): 12.2.0
+Chai: 6.2.0
+TypeScript: 5.9.3
+ts-node: 10.9.2
 
-yarn playwright test
+Testes Mobile
 
+Appium: 2.0.1
+UIAutomator2 Driver: 4.2.4
+XCUITest Driver: 4.16.5
+WebdriverIO: 9.20.0
+Allure Reporter (@wdio/allure-reporter): 9.20.0
+Allure CLI: 2.34.1
+Allure Playwright: 3.4.1
+apk version - Android 12
 
-Rodar no modo UI (e filtrar por projeto dentro da interface):
+Testes de Performance 
 
-yarn playwright test --ui
+K6: (executado via CLI)
+K6 HTML Reporter (k6-html-reporter): 1.0.5
+Auxiliares / CI
+dotenv: 17.2.3
+start-server-and-test: 2.1.2
+tsx: 4.20.6
 
-
-Rodar no modo UI já filtrado por projeto:
-
-yarn playwright test --ui --project=api
-
-
-yarn playwright test --ui --project=e2e
+________________________________________________________________________________________________
+THANK YOU.

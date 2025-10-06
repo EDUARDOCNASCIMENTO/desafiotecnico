@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 715802400
+              "duration": 744582199
             }
           },
           {
@@ -23,11 +23,11 @@
             "line": 4,
             "name": "I open the Login page",
             "match": {
-              "location": "file:\\C:\\Users\\Eduardo\\Desktop\\Outsera\\projeto-outsera\\tests\\e2e\\steps\\checkoutProducts.steps.ts:1"
+              "location": "file:\\C:\\Users\\Eduardo\\Desktop\\Outsera\\desafio-tecnico\\tests\\e2e\\steps\\checkoutProducts.steps.ts:1"
             },
             "result": {
               "status": "passed",
-              "duration": 2481031899
+              "duration": 1714622400
             }
           },
           {
@@ -36,11 +36,11 @@
             "line": 5,
             "name": "I enter with a registered user",
             "match": {
-              "location": "file:\\C:\\Users\\Eduardo\\Desktop\\Outsera\\projeto-outsera\\tests\\e2e\\steps\\checkoutProducts.steps.ts:1"
+              "location": "file:\\C:\\Users\\Eduardo\\Desktop\\Outsera\\desafio-tecnico\\tests\\e2e\\steps\\checkoutProducts.steps.ts:1"
             },
             "result": {
               "status": "passed",
-              "duration": 771674399
+              "duration": 1807653300
             }
           },
           {
@@ -49,11 +49,11 @@
             "line": 6,
             "name": "I place the order",
             "match": {
-              "location": "file:\\C:\\Users\\Eduardo\\Desktop\\Outsera\\projeto-outsera\\tests\\e2e\\steps\\checkoutProducts.steps.ts:1"
+              "location": "file:\\C:\\Users\\Eduardo\\Desktop\\Outsera\\desafio-tecnico\\tests\\e2e\\steps\\checkoutProducts.steps.ts:1"
             },
             "result": {
               "status": "passed",
-              "duration": 6281324800
+              "duration": 6256162800
             }
           },
           {
@@ -62,11 +62,11 @@
             "line": 7,
             "name": "I should see the purchase confirmation",
             "match": {
-              "location": "file:\\C:\\Users\\Eduardo\\Desktop\\Outsera\\projeto-outsera\\tests\\e2e\\steps\\checkoutProducts.steps.ts:1"
+              "location": "file:\\C:\\Users\\Eduardo\\Desktop\\Outsera\\desafio-tecnico\\tests\\e2e\\steps\\checkoutProducts.steps.ts:1"
             },
             "result": {
               "status": "passed",
-              "duration": 305516200
+              "duration": 463475300
             }
           },
           {
@@ -74,7 +74,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 259275600
+              "duration": 236298799
             }
           }
         ],
@@ -104,7 +104,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 473496400
+              "duration": 431478100
             }
           },
           {
@@ -113,11 +113,11 @@
             "line": 4,
             "name": "I open the Sign Up page",
             "match": {
-              "location": "file:\\C:\\Users\\Eduardo\\Desktop\\Outsera\\projeto-outsera\\tests\\e2e\\steps\\registerNewUser.steps.ts:1"
+              "location": "file:\\C:\\Users\\Eduardo\\Desktop\\Outsera\\desafio-tecnico\\tests\\e2e\\steps\\registerNewUser.steps.ts:1"
             },
             "result": {
               "status": "passed",
-              "duration": 1779606300
+              "duration": 2133165799
             }
           },
           {
@@ -126,11 +126,11 @@
             "line": 5,
             "name": "I fill the registration form",
             "match": {
-              "location": "file:\\C:\\Users\\Eduardo\\Desktop\\Outsera\\projeto-outsera\\tests\\e2e\\steps\\registerNewUser.steps.ts:1"
+              "location": "file:\\C:\\Users\\Eduardo\\Desktop\\Outsera\\desafio-tecnico\\tests\\e2e\\steps\\registerNewUser.steps.ts:1"
             },
             "result": {
               "status": "passed",
-              "duration": 1120535500
+              "duration": 626142999
             }
           },
           {
@@ -139,11 +139,11 @@
             "line": 6,
             "name": "I submit the registration",
             "match": {
-              "location": "file:\\C:\\Users\\Eduardo\\Desktop\\Outsera\\projeto-outsera\\tests\\e2e\\steps\\registerNewUser.steps.ts:1"
+              "location": "file:\\C:\\Users\\Eduardo\\Desktop\\Outsera\\desafio-tecnico\\tests\\e2e\\steps\\registerNewUser.steps.ts:1"
             },
             "result": {
               "status": "passed",
-              "duration": 710727600
+              "duration": 707152999
             }
           },
           {
@@ -152,11 +152,11 @@
             "line": 7,
             "name": "I should see the confirmation page",
             "match": {
-              "location": "file:\\C:\\Users\\Eduardo\\Desktop\\Outsera\\projeto-outsera\\tests\\e2e\\steps\\registerNewUser.steps.ts:1"
+              "location": "file:\\C:\\Users\\Eduardo\\Desktop\\Outsera\\desafio-tecnico\\tests\\e2e\\steps\\registerNewUser.steps.ts:1"
             },
             "result": {
               "status": "passed",
-              "duration": 48837700
+              "duration": 60234300
             }
           },
           {
@@ -164,7 +164,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 186716300
+              "duration": 145538000
             }
           }
         ],
