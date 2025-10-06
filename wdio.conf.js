@@ -10,6 +10,7 @@ exports.config = {
     // ====================
     // WebdriverIO supports running e2e tests as well as unit and component tests.
     //runner: 'local',
+    framework: 'mocha',
     port: 4723,
 
     //
@@ -28,16 +29,7 @@ exports.config = {
     // then the current working directory is where your `package.json` resides, so `wdio`
     // will be called from there.
     //
-
-  reporters: [
-    'spec',
-    ['allure', {
-        outputDir: './reports/allure-results',
-        disableWebdriverStepsReporting: false,
-        disableWebdriverScreenshotsReporting: false,
-    }]
-],
-
+    // ...
 
     specs: [
         './tests/mobile/mobile-specs/**/*.js'
@@ -145,18 +137,14 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-   reporters: [
-    'spec', // Mantém o relatório simples no console
-    
-    // Configuração do Allure Reporter
+reporters: [
+    'spec',
     ['allure', {
-      // Pasta onde os resultados brutos do Allure serão salvos
-      outputDir: 'allure-results',
-      // Limpa a pasta de resultados antes de cada execução
-      disableWebdriverStepsReporting: true,
-      disableWebdriverScreenshotsReporting: false,
+        outputDir: './reports/allure-results',
+        disableWebdriverStepsReporting: false,
+        disableWebdriverScreenshotsReporting: false,
     }]
-  ],
+],
 
     //
     // Options to be passed to Mocha.

@@ -1,1 +1,1 @@
-[]
+[{"uid":"85631e8f583e9cbb","name":"should display product on the catalog screen","time":{"start":1759740035632,"stop":1759740043382,"duration":7750},"status":"passed","severity":"normal"},{"uid":"3d7b7ba85cf4f935","name":"should not login with invalid credentials","time":{"start":1759740027223,"stop":1759740035631,"duration":8408},"status":"passed","severity":"normal"}]
