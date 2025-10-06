@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       URL_BASE_API: ${{ secrets.URL_BASE_API }}
+      URL_BASE_E2E: ${{ secrets.URL_BASE_E2E }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
