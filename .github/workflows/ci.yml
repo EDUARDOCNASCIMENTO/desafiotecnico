@@ -2,57 +2,34 @@ name: CI - Outsera Tests
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main, develop, master ]
   pull_request:
-    branches: [ main, develop ]
+    branches: [ main, develop, master ]
 
 jobs:
-  tests:
+  build:
     runs-on: ubuntu-latest
+    env:
+      URL_BASE_API: "https://restful-booker.herokuapp.com/" # sua URL da API
+      NODE_ENV: test
 
     steps:
-      - name: 📦 Checkout do código
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: ⚙️ Configurar Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: 20
 
-      - name: 📥 Instalar dependências
-        run: |
-          npm ci
-          npx playwright install --with-deps
+      - name: Install dependencies
+        run: npm ci
 
-      # ===================== TESTES DE API =====================
-      - name: 🔌 Rodar testes de API (Playwright)
-        run: npx playwright test
+      - name: Run API tests (Playwright)
+        run: npx playwright test tests/api/specs --project=api
 
-      # ===================== TESTES E2E =====================
-      - name: 🌐 Rodar testes E2E (Cucumber)
+      - name: Run E2E tests (Cucumber)
         run: npm run cucumber
 
-      # ===================== TESTES MOBILE =====================
-      - name: 🤖 Instalar dependências Android
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y openjdk-17-jdk android-sdk adb
-          echo "export ANDROID_HOME=/usr/lib/android-sdk" >> $GITHUB_ENV
-          echo "export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools" >> $GITHUB_ENV
-          yes | sudo $ANDROID_HOME/tools/bin/sdkmanager --licenses
-          sudo $ANDROID_HOME/tools/bin/sdkmanager "platform-tools" "platforms;android-31" "system-images;android-31;google_apis;x86_64" "emulator"
-
-      - name: 🚀 Iniciar emulador Android
-        run: |
-          echo "no" | avdmanager create avd -n test -k "system-images;android-31;google_apis;x86_64" -d pixel
-          $ANDROID_HOME/emulator/emulator -avd test -no-window -no-audio -gpu swiftshader_indirect &
-          adb wait-for-device
-          adb shell input keyevent 82
-        timeout-minutes: 3
-
-      - name: 🧪 Rodar testes Mobile (WDIO)
-        run: |
-          npx appium driver install uiautomator2
-          npx appium --log-level info &
-          sleep 10
-          npx wdio run wdio.conf.ts
+      - name: Run Mobile tests (WDIO)
+        run: npx wdio
