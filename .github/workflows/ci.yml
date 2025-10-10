@@ -36,6 +36,7 @@ jobs:
         run: npm run cucumber
 
       - name: Run Mobile Tests on Emulator
+        timeout-minutes: 15
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 31
@@ -43,5 +44,5 @@ jobs:
           target: google_apis
           emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim
           disable-animations: true
-          timeout-minutes: 15
+          emulator-boot-timeout: 600
           script: npx wdio
