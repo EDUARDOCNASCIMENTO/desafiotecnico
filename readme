@@ -19,12 +19,6 @@ Testes de uma apk de testes (saucelabs - que se encontra em apps\android\Android
 
 - CI/CD - github\workflows\ci.yml
 Arquivo yml com as configurações para rodar os testes de API, E2E e mobile pelo Git Hub Actions de forma automatizada. 
-OBS: O simulador do Android na pipeline está levando em torno de 10 minutos para ser inicializado e as vezes a pipeline falha, devido ao prazo de entrega do exercício não pude otimizar essa questão, mas todos os testes estão rodando a cada git push.
-
-________________________________________________________________________________________________________________________________________
-
-* Os relatórios e resultados gerados a partir da execução cada um desses testes estão em forma de relatório e screenshots, 
-no seguinte caminho: desafio-tecnico\evidencias.
 
 ________________________________________________________________________________________________________________________________________
 
